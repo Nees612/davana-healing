@@ -1,8 +1,12 @@
+import { CommonModule } from "@angular/common";
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { RouterModule } from "@angular/router";
 import { createPopper } from "@popperjs/core";
 
 @Component({
   selector: "app-index-dropdown",
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: "./index-dropdown.component.html",
 })
 export class IndexDropdownComponent implements OnInit {
@@ -11,7 +15,7 @@ export class IndexDropdownComponent implements OnInit {
   @ViewChild("popoverDropdownRef", { static: false })
   popoverDropdownRef: ElementRef;
   ngOnInit() {}
-  toggleDropdown(event) {
+  toggleDropdown(event: any) {
     event.preventDefault();
     if (this.dropdownPopoverShow) {
       this.dropdownPopoverShow = false;
