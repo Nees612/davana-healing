@@ -1,5 +1,4 @@
-Logo: https://www.bing.com/images/create/-569805019/2-6648cf20b6c9497694ce80357281af4c?id=Qy1Z%2B7da8tahFnGK5QP%2FBw%3D%3D&view=detailv2&idpp=genimg&idpclose=1&genimgbce=1&thid=OIGBCE4.0tqJFIoS.k3P1deF17lh&form=SYDBIC
-
+Logo: https://www.bing.com/images/create/-569805019/2-6648cf20b6c9497694ce80357281af4c?id=Qy1Z%2b7da8tahFnGK5QP%2fBw%3d%3d&view=detailv2&idpp=genimg&idpclose=1&genimgbce=1&thId=OIGBCE4.0tqJFIoS.k3P1deF17lh&FORM=SYDBIC
 # DavanaHealing
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
