@@ -1,4 +1,7 @@
-<app-index-navbar></app-index-navbar>
+<div #staticNavbar>
+  <app-auth-navbar  ></app-auth-navbar>
+</div>
+<app-index-navbar [class.hidden]="isVisible"></app-index-navbar>
 
 <main>
   <section class="header relative pt-16 items-center flex h-screen max-h-860-px">
@@ -235,7 +238,7 @@
       </svg>
     </div>
 
-    <div class="pb-56 pt-8 sm:pt-16 container mx-auto px-4 lg:pt-24 sm:pb-48 ">
+    <div class="pb-56 pt-12 sm:pt-16 container mx-auto px-4 lg:pt-24 sm:pb-48 ">
       <div class="flex flex-wrap text-center justify-center">
         <div class="z-10 lg:w-6/12 px-4">
           <h2 class="text-4xl font-semibold text-gray-600">Nurturing Balance, Igniting Wellness</h2>
@@ -296,7 +299,7 @@
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-3 mt-4 mb-4 gap-2">
 
-            <mat-card class="w-full px-4 bg-white">
+            <mat-card class="w-full px-4 bg-white hover:-translate-y-6 duration-150">
               <mat-card-header>
                 <mat-card-title class="text-emerald-700 font-bold">Spiritual Healing</mat-card-title>
                 <mat-card-subtitle class="text-gray-500">By Adrienn</mat-card-subtitle>
@@ -315,7 +318,7 @@
               </mat-card-actions>
             </mat-card>
 
-            <mat-card class="w-full px-4 bg-white">
+            <mat-card class="w-full px-4 bg-white hover:-translate-y-6 duration-150">
               <mat-card-header>
                 <mat-card-title class="text-emerald-700 font-bold">Unhealed Hurt</mat-card-title>
                 <mat-card-subtitle class="text-gray-500">By Adrienn</mat-card-subtitle>
@@ -334,7 +337,7 @@
               </mat-card-actions>
             </mat-card>
 
-            <mat-card class="z-10 w-full px-4 bg-white">
+            <mat-card class="z-10 w-full px-4 bg-white hover:-translate-y-6 duration-150">
               <mat-card-header>
                 <mat-card-title class="text-emerald-700 font-bold">Inner Child</mat-card-title>
                 <mat-card-subtitle class="text-gray-500">By Adrienn</mat-card-subtitle>
