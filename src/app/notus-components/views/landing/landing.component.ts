@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "app-landing",
+  selector: "app-landing-temp",
   templateUrl: "./landing.component.html",
 })
-export class LandingComponent implements OnInit {
+export class LandingComponentTemp implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}

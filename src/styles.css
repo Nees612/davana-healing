@@ -4,3 +4,46 @@
 @tailwind utilities;
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.custom-shape-divider-bottom-1716211746 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1716211746 svg {
+    position: relative;
+    display: block;
+    width: calc(107% + 1.3px);
+    height: 83px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1716211746 .shape-fill {
+    fill: #F5A623;
+}
+
+.custom-shape-divider-top-1716211787 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1716211787 svg {
+    position: relative;
+    display: block;
+    width: calc(107% + 1.3px);
+    height: 83px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1716211787 .shape-fill {
+    fill: #F5A623;
+}

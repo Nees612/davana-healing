@@ -1,0 +1,128 @@
+
+
+.custom-shape-divider-bottom-1716211093 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1716211093 svg {
+    position: relative;
+    display: block;
+    width: calc(190% + 1.3px);
+    height: 77px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1716211093 .shape-fill {
+    fill: #F5A623;
+}
+
+.custom-shape-divider-top-1716211387 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1716211387 svg {
+    position: relative;
+    display: block;
+    width: calc(113% + 1.3px);
+    height: 86px;
+}
+
+.custom-shape-divider-top-1716211387 .shape-fill {
+    fill: #F5A623;
+}
+
+.custom-shape-divider-bottom-1716211438 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1716211438 svg {
+    position: relative;
+    display: block;
+    width: calc(113% + 1.3px);
+    height: 86px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1716211438 .shape-fill {
+    fill: #F5A623;
+}
+
+.custom-shape-divider-top-1716211553 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1716211553 svg {
+    position: relative;
+    display: block;
+    width: calc(118% + 1.3px);
+    height: 61px;
+}
+
+.custom-shape-divider-top-1716211553 .shape-fill {
+    fill: #F5A623;
+}
+
+.custom-shape-divider-bottom-1716211638 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1716211638 svg {
+    position: relative;
+    display: block;
+    width: calc(121% + 1.3px);
+    height: 83px;
+}
+
+.custom-shape-divider-bottom-1716211638 .shape-fill {
+    fill: #F5A623;
+}
+
+.custom-shape-divider-top-1716211695 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1716211695 svg {
+    position: relative;
+    display: block;
+    width: calc(121% + 1.3px);
+    height: 83px;
+}
+
+.custom-shape-divider-top-1716211695 .shape-fill {
+    fill: #F5A623;
+}
+
+
+
