@@ -7,11 +7,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCardModule} from '@angular/material/card';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, IndexNavbarComponent, FooterComponent, RouterModule, MatCardModule, MatDatepickerModule, MatBadgeModule],
+  imports: [RouterOutlet, IndexNavbarComponent, FooterComponent, RouterModule, MatCardModule, MatDatepickerModule, MatBadgeModule, MatButtonModule],
   providers: [provideNativeDateAdapter()],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
