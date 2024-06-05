@@ -12,7 +12,7 @@
                         combines ancient wisdom with modern practices to guide you on your healing journey.
                     </p>
                     <div class="mt-12">
-                        <a [routerLink]="['/coach']" target="_blank"
+                        <a [routerLink]="['/coach']"
                             class="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-amber-500 hover:bg-amber-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
                             Book Appointment
                         </a>
@@ -20,6 +20,10 @@
                             class="github-star ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-slate-700 hover:bg-slate-900 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
                             Contact
                         </a>
+                        <button (click)="callUserLogin()"
+                            class="github-star ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-slate-700 hover:bg-slate-900 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
+                            Test
+                        </button>
                     </div>
                 </div>
             </div>
@@ -29,7 +33,7 @@
             src="assets/img/davidannamari.png" alt="..." />
     </section>
 
-    <div >
+    <div class="-mt-2 sm:mt-0">
         <section class="relative ">
             <div class="custom-shape-divider-bottom-1716211093">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"

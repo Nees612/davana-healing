@@ -10,6 +10,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthNavbarComponent } from '../../notus-components/components/navbars/auth-navbar/auth-navbar.component';
 
+import { UserService } from '../../services/user.service';
+import { Credentials } from '../../types';
+
 @Component({
   selector: 'app-landing-page',
   standalone: true,
@@ -21,12 +24,20 @@ import { AuthNavbarComponent } from '../../notus-components/components/navbars/a
     MatCardModule,
     MatDatepickerModule,
     MatBadgeModule,
-    MatButtonModule],
+    MatButtonModule,
+    ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
 export class LandingComponent {
+
+  constructor(private userService: UserService){}
+
+  callUserLogin() {
+    let creds:Credentials = {Emailaddress: "john.doe@example.com", PasswordHash: "hashed_password" }
+    this.userService.login(creds).subscribe((res)=> console.log(res));
+  }
 
   @ViewChild('staticNavbar') private testDiv: ElementRef;
   isVisible: boolean;
