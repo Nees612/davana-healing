@@ -3,4 +3,4 @@ import { ProfileComponent } from './notus-components/views/profile/profile.compo
 import { LandingComponent } from './pages/landingpage/landing-page.component';
 
 
-export const routes: Routes = [{ path: 'coach', component: ProfileComponent }, {path: '', component: LandingComponent }];
+export const routes: Routes = [{ path: 'coach/:coachID', component: ProfileComponent }, {path: '', component: LandingComponent }];

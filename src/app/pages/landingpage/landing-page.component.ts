@@ -10,8 +10,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthNavbarComponent } from '../../notus-components/components/navbars/auth-navbar/auth-navbar.component';
 
-import { UserService } from '../../services/user.service';
-import { Credentials } from '../../types';
+import { Coach } from '../../types';
+import { CoachService } from '../../services/coach-service/coach.service';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-landing-page',
@@ -32,11 +33,18 @@ import { Credentials } from '../../types';
 })
 export class LandingComponent {
 
-  constructor(private userService: UserService){}
+  public coachList: Coach[];
+  public firstFourCoach: Coach[];
 
-  callUserLogin() {
-    let creds:Credentials = {Emailaddress: "john.doe@example.com", PasswordHash: "hashed_password" }
-    this.userService.login(creds).subscribe((res)=> console.log(res));
+  public showLess: boolean = true;
+  public showSwitchText: string = "View All"
+
+  constructor(private coachService: CoachService, private scroller: ViewportScroller){
+    this.coachService.getCoaches().subscribe((res) => {
+      this.coachList = res; console.log(this.coachList)
+      this.firstFourCoach = this.coachList.slice(0, 4);
+    });
+    
   }
 
   @ViewChild('staticNavbar') private testDiv: ElementRef;
@@ -50,6 +58,16 @@ export class LandingComponent {
       const bottomShown = rect.bottom <= window.innerHeight;
       this.isVisible = topShown && bottomShown;            
     }
+  }
+
+  goToCoaches(){
+    this.scroller.scrollToAnchor("coachSection");
+  }
+
+  onShowSwitch(){
+    console.log(this.showLess)
+    this.showLess = !this.showLess;
+    this.showSwitchText = this.showLess? "View All" : "Show Less"
   }
   
   selected: Date | null;

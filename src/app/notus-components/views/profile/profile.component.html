@@ -1,20 +1,26 @@
 <main class="profile-page bg-white">
   <section class="relative py-16 z-10">
     <div class="container mx-auto px-4">
-      <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg ">
+      <div
+        class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg"
+      >
         <div class="px-6">
           <div class="flex flex-wrap justify-center">
             <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
               <div class="relative">
-                <img alt="..." src="assets/img/team-2-800x800.jpg"
-                  class="shadow-xl rounded-full h-auto align-middle mt-12 border-none max-w-150-px" />
+                <img
+                  alt="..."
+                  src="assets/img/team-2-800x800.jpg"
+                  class="shadow-xl rounded-full h-auto align-middle mt-12 border-none max-w-150-px"
+                />
               </div>
             </div>
-            <div class="w-full lg:w-4/12 px-4 lg:order-3 ">
+            <div class="w-full lg:w-4/12 px-4 lg:order-3">
               <div class="py-6 px-3 sm:mt-0 text-center sm:text-end">
                 <button
-                  class=" bg-emerald-700 hover:bg-emerald-800 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
-                  type="button">
+                  class="bg-emerald-700 hover:bg-emerald-800 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+                  type="button"
+                >
                   Contact
                 </button>
               </div>
@@ -22,52 +28,61 @@
             <div class="w-full lg:w-4/12 px-4 lg:order-1">
               <div class="flex justify-center py-4 lg:pt-4 pt-8">
                 <div class="mr-4 p-3 text-center">
-                  <span class="text-xl font-bold block uppercase tracking-wide text-gray-600">
-                    22
+                  <span
+                    class="text-xl font-bold block uppercase tracking-wide text-gray-600"
+                  >
                   </span>
-                  <span class="text-sm text-gray-400">Friends</span>
+                  <span class="text-sm text-gray-400"></span>
                 </div>
                 <div class="mr-4 p-3 text-center">
-                  <span class="text-xl font-bold block uppercase tracking-wide text-gray-600">
-                    10
+                  <span
+                    class="text-xl font-bold block uppercase tracking-wide text-gray-600"
+                  >
                   </span>
-                  <span class="text-sm text-gray-400">Photos</span>
+                  <span class="text-sm text-gray-400"></span>
                 </div>
                 <div class="lg:mr-4 p-3 text-center">
-                  <span class="text-xl font-bold block uppercase tracking-wide text-gray-600">
-                    89
+                  <span
+                    class="text-xl font-bold block uppercase tracking-wide text-gray-600"
+                  >
                   </span>
-                  <span class="text-sm text-gray-400">Comments</span>
+                  <span class="text-sm text-gray-400"></span>
                 </div>
               </div>
             </div>
           </div>
           <div class="text-center mt-12">
-            <h3 class="text-4xl font-semibold leading-normal mb-2 text-gray-700 mb-2">
-              Jenna Stones
+            <h3
+              class="text-4xl font-semibold leading-normal mb-2 text-gray-700 mb-2"
+            >
+              {{
+                coach.firstName +
+                  " " +
+                  (coach.middleName ? coach.middleName : "") +
+                  " " +
+                  coach.lastName
+              }}
             </h3>
-            <div class="text-sm leading-normal mt-0 mb-2 text-gray-400 font-bold uppercase">
+            <div
+              class="text-sm leading-normal mt-0 mb-2 text-gray-400 font-bold uppercase"
+            >
               <i class="fas fa-map-marker-alt mr-2 text-lg text-gray-400"></i>
-              Los Angeles, California
+              {{ coach.closestWorkAddress }}
             </div>
             <div class="mb-2 text-gray-600 mt-10">
               <i class="fas fa-briefcase mr-2 text-lg text-gray-400"></i>
-              Solution Manager - Creative Tim Officer
+              {{ coach.emailAddress }}
             </div>
             <div class="mb-2 text-gray-600">
               <i class="fas fa-university mr-2 text-lg text-gray-400"></i>
-              University of Computer Science
+              {{ coach.phoneNumber }}
             </div>
           </div>
           <div class="mt-10 py-10 border-t border-gray-200 text-center">
             <div class="flex flex-wrap justify-center">
               <div class="w-full lg:w-9/12 px-4">
                 <p class="mb-4 text-lg leading-relaxed text-gray-700">
-                  An artist of considerable range, Jenna the name taken by
-                  Melbourne-raised, Brooklyn-based Nick Murphy writes, performs
-                  and records all of his own music, giving it a warm, intimate
-                  feel with a solid groove structure. An artist of considerable
-                  range.
+                  {{ coach.aboutMe }}
                 </p>
                 <a href="javascript:void(0)" class="font-bold text-emerald-600">
                   Show more
@@ -80,54 +95,101 @@
     </div>
   </section>
 
+  <!-- <section class="relative pt-8 py-16 z-10" [class.hidden]="isCalendarEmpty"> -->
   <section class="relative pt-8 py-16 z-10">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 sm:grid-cols-2">
         <div class="p-4 sm:p-8 sm:-mr-8">
-          <mat-card class="bg-gradient bg-gradient-to-r from-amber-300 to-amber-400 rounded-none">
-            <mat-calendar [(selected)]="selected"></mat-calendar>
+          <mat-card
+            class="bg-gradient bg-gradient-to-r from-amber-400 to-amber-600 rounded-none"
+          >
+            <mat-calendar
+              class="text-xl font-bold"
+              [dateFilter]="dateFilter"
+              [(selected)]="selected"
+              (selectedChange)="getSelectedDateHours()"
+            ></mat-calendar>
           </mat-card>
         </div>
         <div class="p-8 sm:p-12 bg-gray-100">
           <div class="pb-3">
-            <h2 class="text-xl font-semibold text-gray-600 " >Confirm meeting for</h2>
-            <p class="text-gray-400">{{selected | date:'fullDate'}}</p>
-          </div>
-          
-          <form>
+            <h2 class="text-xl font-semibold text-gray-600">
+              Confirm meeting for
+            </h2>
+            <p class="text-gray-400">{{ selected | date : "fullDate" }}</p>
 
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 pt-2 w-full"
+            >
+              @for (appointmentHours of appointmentHoursList; track $index) {
+              <div
+                class="text-white text-center p-2 w-full font-bold rounded outline-none focus:outline-none bg-amber-500 hover:bg-amber-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+              >
+                <span>{{ appointmentHours.date | date : "shortTime" }}</span>
+              </div>
+              }
+            </div>
+          </div>
+
+          <form>
             <mat-form-field class="w-full m-1" hintLabel="Max 10 characters">
               <mat-label>First name</mat-label>
-              <input matInput #input maxlength="10" placeholder="Ex. Jhon" required>
-              <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+              <input
+                matInput
+                #input
+                maxlength="10"
+                placeholder="Ex. Jhon"
+                required
+              />
+              <mat-hint align="end">{{ input.value.length }}/10</mat-hint>
             </mat-form-field>
 
             <mat-form-field class="w-full m-1" hintLabel="Max 10 characters">
               <mat-label>Last name</mat-label>
-              <input matInput #input maxlength="10" placeholder="Ex. Doe" required>
-              <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+              <input
+                matInput
+                #input
+                maxlength="10"
+                placeholder="Ex. Doe"
+                required
+              />
+              <mat-hint align="end">{{ input.value.length }}/10</mat-hint>
             </mat-form-field>
 
             <mat-form-field class="w-full m-1">
               <mat-label>Your Email Address</mat-label>
-              <input matInput placeholder="pat@example.com" [formControl]="email" (blur)="updateErrorMessage()"
-                required>
+              <input
+                matInput
+                placeholder="pat@example.com"
+                [formControl]="email"
+                (blur)="updateErrorMessage()"
+                required
+              />
               @if (email.invalid) {
-              <mat-error>{{errorMessage}}</mat-error>
+              <mat-error>{{ errorMessage }}</mat-error>
               }
             </mat-form-field>
 
             <div class="mt-4 mx-1 text-center">
-              <a href="#" target="_blank"
-                  class="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-amber-500 hover:bg-amber-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
-                  Book Appointment
-              </a>
-          </div>
-
+              <button
+                class="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-amber-500 hover:bg-amber-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+              >
+                Book Appointment
+              </button>
+            </div>
           </form>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- <section class="relative pt-8 py-16 z-10" [class.hidden]="!isCalendarEmpty">
+    <div class="container mx-auto px-4">
+      <h3
+        class="text-4xl text-center font-semibold leading-normal mb-2 text-gray-700 mb-2"
+      >
+        Sorry No available appointments here, check other practitioners! :(
+      </h3>
+    </div>
+  </section> -->
 </main>
