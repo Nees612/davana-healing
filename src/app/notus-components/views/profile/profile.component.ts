@@ -36,20 +36,21 @@ import { AppointmentService } from "../../../services/appointment-service/appoin
   templateUrl: "./profile.component.html",
 })
 export class ProfileComponent implements OnInit {
+  @Input() coachID!:string;
+
   public selected: Date | null;
   public coach: Coach;
   public appointments: Appointment[];
   public availableDates: Date[] = new Array<Date>;
   public appointmentHoursList: Appointment[];
-
+  public selectedAppointment: Appointment;
   public isCalendarEmpty: boolean = true;
-
-
-  @Input() coachID!:string;
 
   dateFilter: (date: Date) => boolean
 
   email = new FormControl('', [Validators.required, Validators.email]);
+  firstName = new FormControl('', [Validators.required]);
+  lastName = new FormControl('', [Validators.required]);
 
   errorMessage = '';
 
@@ -84,6 +85,11 @@ export class ProfileComponent implements OnInit {
         this.selected = new Date(this.availableDates[0]);
         this.getSelectedDateHours();
       });
+  }
+
+  selectAppointment(appointment: Appointment){
+    this.selectedAppointment = appointment;
+    console.log(this.selectedAppointment)
   }
 
   updateErrorMessage() {

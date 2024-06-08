@@ -14,11 +14,11 @@ export class CoachService {
   constructor(private httpClient: HttpClient ) { }
 
 
-  getCoaches(){
+  getCoaches() : Observable<Coach[]> {
     return this.httpClient.get<Coach[]>(`${this.url}/all`)
   }
 
-  getCoach(coachID:string){
+  getCoach(coachID:string) : Observable<Coach> {
     return this.httpClient.get<Coach>(`${this.url}/coach/${coachID}`);
   }
 

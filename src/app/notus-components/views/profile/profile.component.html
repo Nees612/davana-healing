@@ -122,11 +122,12 @@
               class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 pt-2 w-full"
             >
               @for (appointmentHours of appointmentHoursList; track $index) {
-              <div
-                class="text-white text-center p-2 w-full font-bold rounded outline-none focus:outline-none bg-amber-500 hover:bg-amber-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+              <button
+                class="text-white text-center p-2 w-full font-bold rounded focus:bg-rose-700 bg-amber-500 hover:bg-amber-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+                (click)="selectAppointment(appointmentHours)"
               >
-                <span>{{ appointmentHours.date | date : "shortTime" }}</span>
-              </div>
+                {{ appointmentHours.date | date : "shortTime" }}
+              </button>
               }
             </div>
           </div>
@@ -139,6 +140,7 @@
                 #input
                 maxlength="10"
                 placeholder="Ex. Jhon"
+                [formControl]="firstName"
                 required
               />
               <mat-hint align="end">{{ input.value.length }}/10</mat-hint>
@@ -151,6 +153,7 @@
                 #input
                 maxlength="10"
                 placeholder="Ex. Doe"
+                [formControl]="lastName"
                 required
               />
               <mat-hint align="end">{{ input.value.length }}/10</mat-hint>

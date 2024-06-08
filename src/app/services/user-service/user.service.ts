@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Credentials } from '../types';
+import { Credentials } from '../../types';
 
 @Injectable({
   providedIn: 'root'
@@ -16,4 +16,9 @@ export class UserService {
   login(creds:Credentials): Observable<string> {
     return this.httpClient.post<string>(`${this.url}/login`,creds);
   }
+
+  // isUserLoggedIn(){
+  //   let Bearer = 
+  // }
+
 }
