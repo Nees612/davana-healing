@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Credentials } from '../../types';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
 
@@ -17,8 +17,9 @@ export class UserService {
     return this.httpClient.post<string>(`${this.url}/login`,creds);
   }
 
-  // isUserLoggedIn(){
-  //   let Bearer = 
-  // }
+  isUserLoggedIn(bearerToken: string): Observable<boolean>{
+    return this.httpClient.get<boolean>(`${this.url}/isTokenValid`, {headers: {"Authorization": bearerToken}})
+  }
 
 }
+

@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AppointmentService {
+export class BookingService {
   private baseUrl = "http://localhost:5078/api";
-  private url = this.baseUrl + '/Appointment';
+  private url = this.baseUrl + '/Booking';
 
   constructor(private httpClient: HttpClient) { }
 
-  getAppointmentByCoachID(coachID: string) : Observable<Appointment[]> {
-    return this.httpClient.get<Appointment[]>(`${this.url}/coach-appointments/${coachID}`);
-  }
 
+  startBooking(appointmentID: number,bearerToken: string) : Observable<Appointment>{
+    return this.httpClient.post<Appointment>(`${this.url}/start-booking`,appointmentID, {headers: {"Authorization": bearerToken}});
+  }
 }
