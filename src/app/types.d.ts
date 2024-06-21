@@ -26,3 +26,11 @@ export interface Appointment{
     meetingType: string,
     approoved: number
 }
+
+export interface User{
+    firstName:string,
+    middleName:string,
+    lastName:string,
+    emailAddress:string,
+    phoneNumber:string,
+}
