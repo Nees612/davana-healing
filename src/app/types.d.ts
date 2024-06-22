@@ -28,9 +28,9 @@ export interface Appointment{
 }
 
 export interface User{
-    firstName:string,
-    middleName:string,
+    firstName:string,    
     lastName:string,
     emailAddress:string,
+    passwordHash:string,
     phoneNumber:string,
 }

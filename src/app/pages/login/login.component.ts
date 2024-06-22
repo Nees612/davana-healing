@@ -8,6 +8,7 @@ import { merge } from 'rxjs';
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { MatInputModule } from "@angular/material/input";
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 
 
@@ -20,7 +21,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule],
-  providers: [CookieService],
+  providers: [
+    CookieService,
+    JwtHelperService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }],
   templateUrl: "./login.component.html",
 })
 export class LoginComponent implements OnInit {
@@ -33,7 +37,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private cookieService: CookieService, 
-    private router: Router, 
+    private router: Router,
+    private jwtHelper: JwtHelperService, 
     private _snackBar: MatSnackBar ) {
     merge(this.email.statusChanges, this.email.valueChanges)
     .pipe(takeUntilDestroyed())
@@ -48,15 +53,20 @@ export class LoginComponent implements OnInit {
         {
           next: (res) => 
             {
-              this.cookieService.set("auth", res, undefined, "/");
-              let userName = JSON.parse(atob(res.split('.')[1]))["name"];              
+              let decodedToken = this.jwtHelper.decodeToken(res);              
+              let userName = decodedToken.name;
+
+              this.cookieService.set("auth", res, undefined, "/");              
               this.cookieService.set("name", userName, undefined, "/");
               this.router.navigate(['/']).then(() => {this._snackBar.open("Login Succesfull!", "Nice!", {
                 horizontalPosition: "center",
                 verticalPosition: "top",
               });})
             },
-          error: (err) => {this.cookieService.set("auth", ""); alert("Authentication Failed.")},
+          error: (err) => {this.cookieService.set("auth", ""); this._snackBar.open("Authentication Failed. Try again later...:(", "Nice!", {
+            horizontalPosition: "center",
+            verticalPosition: "top",
+          });}
         }
       )
     }

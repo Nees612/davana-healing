@@ -19,7 +19,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { BookingService} from "../../services/booking-service/booking.service";
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { RouterModule } from "@angular/router";
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { JwtHelperService, JWT_OPTIONS } from "@auth0/angular-jwt";
 
 @Component({
   selector: "app-profile",
@@ -36,7 +37,11 @@ import {MatSnackBar} from '@angular/material/snack-bar';
     DatePipe,
     MatButtonToggleModule,
     RouterModule],
-  providers: [provideNativeDateAdapter(), CookieService],
+  providers: [
+    provideNativeDateAdapter(),
+    CookieService,
+    JwtHelperService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }],
   templateUrl: "./profile.component.html",
 })
 export class ProfileComponent implements OnInit {
@@ -68,7 +73,8 @@ export class ProfileComponent implements OnInit {
     private userService: UserService, 
     private cookieService: CookieService,
     private bookingService: BookingService,
-    private _snackBar: MatSnackBar ) {
+    private _snackBar: MatSnackBar,
+    private jwtHelper: JwtHelperService ) {
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
@@ -115,10 +121,11 @@ export class ProfileComponent implements OnInit {
   }
 
   private setFormUserData(bearerToken: string){
-    let splittedUserName: string[] = JSON.parse(atob(bearerToken.split('.')[1]))["name"].split(' ');     
+    let decodedToken = this.jwtHelper.decodeToken(bearerToken);
+    let splittedUserName: string[] = decodedToken.name.split(' ');
     this.firstName.setValue(splittedUserName[0]);     
     this.lastName.setValue(splittedUserName[1]);
-    this.email.setValue(JSON.parse(atob(bearerToken.split('.')[1]))["sub"]);
+    this.email.setValue(decodedToken.sub);
   }
 
   selectAppointment(appointment: Appointment, index:number){
