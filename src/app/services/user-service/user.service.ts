@@ -9,7 +9,7 @@ import { Credentials, User } from '../../types';
 })
 export class UserService {
   
-  private baseUrl = "http://localhost:5078/api";
+  private baseUrl = "https://h01422inrl.execute-api.eu-west-1.amazonaws.com/Prod/api";
   private url = this.baseUrl + '/User';
 
   constructor(private httpClient: HttpClient ) { }
@@ -20,10 +20,6 @@ export class UserService {
 
   login(creds:Credentials): Observable<string> {
     return this.httpClient.post<string>(`${this.url}/login`,creds);
-  }
-
-  isUserLoggedIn(bearerToken: string): Observable<boolean>{
-    return this.httpClient.get<boolean>(`${this.url}/isTokenValid`, {headers: {"Authorization": bearerToken}})
   }
 
 }

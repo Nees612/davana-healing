@@ -5,12 +5,16 @@ import { Router, RouterModule, EventType } from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from "../../../../services/user-service/user.service";
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { JwtHelperService, JWT_OPTIONS} from "@auth0/angular-jwt";
 
 @Component({
   selector: "app-index-navbar",
   standalone: true,
   imports: [IndexDropdownComponent, CommonModule, RouterModule],
-  providers: [CookieService],
+  providers: [
+    CookieService,
+    JwtHelperService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }],
   templateUrl: "./index-navbar.component.html",
 })
 export class IndexNavbarComponent implements OnInit {
@@ -22,7 +26,8 @@ export class IndexNavbarComponent implements OnInit {
     private cookieService: CookieService, 
     private userService: UserService, 
     private router: Router,
-    private _snackBar: MatSnackBar) {    
+    private _snackBar: MatSnackBar,
+    private jwtHelper: JwtHelperService) {    
     router.events.subscribe((val) => {
       if(val.type == EventType.NavigationEnd){
         this.checkToken();
@@ -36,19 +41,24 @@ export class IndexNavbarComponent implements OnInit {
 
   private checkToken(){
     let bearerToken = `Bearer ${this.cookieService.get("auth")}`;
-    this.userService.isUserLoggedIn(bearerToken).subscribe(
-      {
-        next: (res) => 
-          {
-            this.userHasToken = res;
-            this.userName = this.getUserName();
-          },
-        error: () => 
-          {
-            this.userHasToken = false;
-            this.userName = "";
-          }
-      });
+    let tokenExp = null;
+    try
+    {
+      tokenExp = this.jwtHelper.getTokenExpirationDate(bearerToken);
+      if(tokenExp && tokenExp > new Date()){
+        this.userHasToken = true;
+        this.userName = this.getUserName();
+      }else{
+        this.userHasToken = false;
+        this.userName = "";
+      }
+    }catch(e)
+    {
+      this.userHasToken = false;
+      this.userName = "";
+      return;
+    }
+     
   }
 
   private getUserName(): string{

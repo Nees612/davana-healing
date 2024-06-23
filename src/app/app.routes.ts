@@ -6,8 +6,10 @@ import { RegisterComponent } from './pages/register/register.component';
 
 
 export const routes: Routes = [
-    {path: 'coach/:coachID', component: ProfileComponent },
     {path: '', component: LandingComponent },
     {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent}
+    {path: 'register', component: RegisterComponent},
+    {path: 'coach/:coachID', component: ProfileComponent },
+    {path: '', redirectTo: '/', pathMatch: 'full'},
+    {path: '**', redirectTo: '/', pathMatch: 'full'}
 ];

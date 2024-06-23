@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AppointmentService {
-  private baseUrl = "http://localhost:5078/api";
+  private baseUrl = "https://h01422inrl.execute-api.eu-west-1.amazonaws.com/Prod/api";
   private url = this.baseUrl + '/Appointment';
 
   constructor(private httpClient: HttpClient) { }

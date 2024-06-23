@@ -108,7 +108,7 @@
           </mat-card>
         </div>
         <div class="p-8 sm:p-12 bg-gray-100">
-          <div class="pb-3">
+          <div class="pb-3" [class.hidden]="!userHasToken">
             <h2 class="text-xl font-semibold text-gray-600">
               Confirm meeting for
             </h2>

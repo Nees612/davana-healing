@@ -41,7 +41,7 @@ export class LandingComponent {
 
   constructor(private coachService: CoachService, private scroller: ViewportScroller){
     this.coachService.getCoaches().subscribe((res) => {
-      this.coachList = res; console.log(this.coachList)
+      this.coachList = res; 
       this.firstFourCoach = this.coachList.slice(0, 4);
     });
     
@@ -64,8 +64,7 @@ export class LandingComponent {
     this.scroller.scrollToAnchor("coachSection");
   }
 
-  onShowSwitch(){
-    console.log(this.showLess)
+  onShowSwitch(){    
     this.showLess = !this.showLess;
     this.showSwitchText = this.showLess? "View All" : "Show Less"
   }

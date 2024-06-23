@@ -69,8 +69,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private coachService: CoachService,
-    private appointmentService: AppointmentService, 
-    private userService: UserService, 
+    private appointmentService: AppointmentService,     
     private cookieService: CookieService,
     private bookingService: BookingService,
     private _snackBar: MatSnackBar,
@@ -109,15 +108,23 @@ export class ProfileComponent implements OnInit {
       });
     
     let bearerToken = `Bearer ${this.cookieService.get("auth")}`;
-    this.userService.isUserLoggedIn(bearerToken).subscribe(
-      {
-        next: (res) =>
-          { 
-            this.userHasToken = res
-            this.setFormUserData(bearerToken);
-          },
-        error: () => this.userHasToken = false
-      });
+    let tokenExp = null;
+    try
+    {
+      tokenExp = this.jwtHelper.getTokenExpirationDate(bearerToken);
+      if(tokenExp && tokenExp > new Date())
+        {
+          this.userHasToken = true;
+          this.setFormUserData(bearerToken);
+        }else{
+          this.userHasToken = false
+        }
+    }
+    catch(e)
+    {
+      this.userHasToken = false;
+      return
+    }
   }
 
   private setFormUserData(bearerToken: string){
