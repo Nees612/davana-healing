@@ -37,7 +37,7 @@ export class LandingComponent {
   public firstFourCoach: Coach[];
 
   public showLess: boolean = true;
-  public showSwitchText: string = "View All"
+  public showSwitchText: string = "Mutass többet"
 
   constructor(private coachService: CoachService, private scroller: ViewportScroller){
     this.coachService.getCoaches().subscribe((res) => {
@@ -66,7 +66,7 @@ export class LandingComponent {
 
   onShowSwitch(){    
     this.showLess = !this.showLess;
-    this.showSwitchText = this.showLess? "View All" : "Show Less"
+    this.showSwitchText = this.showLess? "Mutass többet" : "Mutass kevesebbet"
   }
   
   selected: Date | null;
